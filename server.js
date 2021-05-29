@@ -1,8 +1,14 @@
 const express = require('express');
+const mongoose =require('mongoose');
 const app = express();
 const data = require("./data.json");
 
 app.use(express.json());
+
+mongoose.connect('mongodb+srv://cadastro:cadastro@cluster0.qf8op.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 
 
 // POST - Criar usuário //
