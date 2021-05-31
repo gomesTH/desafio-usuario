@@ -1,18 +1,15 @@
 const express = require('express');
-const mongoose =require('mongoose');
+const UsuarioModel = require('./usuario');
 const app = express();
 const data = require("./data.json");
 
-app.use(express.json());
 
-mongoose.connect('mongodb+srv://cadastro:cadastro@cluster0.qf8op.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+
+app.use(express.json());
 
 
 // POST - Criar usuário //
-app.post("/clients", function(req, res){
+app.post("/clients", async function(req, res){
   const 
         { 
           nome,
@@ -25,28 +22,46 @@ app.post("/clients", function(req, res){
 
         } = req.body;
 
-   res.json({ nome, nascimento, idade, cpf, cep, endereco});     
+       const usuarioModel = new UsuarioModel(
+        {
+          nome, nascimento, idade, cpf, cep, endereco
+       }
+       );
+
+       const usuario = await usuarioModel.save({
+                   nome, nascimento, idade, cpf, cep, endereco
+                });
+  
+        res.json(usuario);     
 
 });
 
 
 // GET - Listar todos usuários //
-app.get("/clients", function(req, res){ 
-  res.json(data);
+app.get("/clients", async function(req, res){ 
+  const usuarios = await UsuarioModel.find();
+   res.json(usuarios);
 });
 
 
 // GET - Buscar usuário pelo id //
-app.get("/clients/:id", function(req, res) { 
+app.get("/clients/:id", async function(req, res) { 
   const { id } = req.params
-  const client = data.find(cli => cli.id == id);
+  const usuarios = data.find(cli => cli.id == id);
+  try {
+    const usuario = await UsuarioModel.findById(req.params.id)
+    
+    return res.send({ usuario });
+  } catch (err) {
+    
+  }
 
-  res.json(client);
+  res.json(usuarios);
 });
 
 
 // PUT - Alterar um(1) item
-app.put("/clients/:id", function(req, res){
+app.put("/clients/:id", async function(req, res){
   const { id } = req.params;
   const client = data.find(cli => cli.id == id);
 
@@ -62,7 +77,7 @@ app.put("/clients/:id", function(req, res){
   client.nome = nome;
 
   client.nascimento = nascimento;
-
+  
   client.idade = idade;
 
   client.cpf = cpf;
@@ -75,14 +90,28 @@ app.put("/clients/:id", function(req, res){
   res.json(client);
 });
 
+  console.log("Server ON!")
 
 // DELETE - Deletar usuário passando o ID //
-app.delete("/clients/:id", function(req, res){
-  const { id } =req.params;
-  const clientsFiltered = data.filter(client => client.id != id);
-
-  res.json(clientsFiltered);
-});
+app.delete("/clients/:id", async function(req, res){
+    const { id } = req.params;
+    const  usuarios = data.filter(client => client.id != id);
+  
+   await UsuarioModel.findByIdAndRevome(usuario, done) 
+        if (err) {
+            
+        } else {
+          done(null, deletedRecord)
+        }
+    
+  
+       
+      return res.send();
+      return res.status(400).send({error: "Error Deleting project" });
+    
+   }
+  
+);
 
 
 
