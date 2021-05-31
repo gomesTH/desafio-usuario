@@ -10,6 +10,8 @@ mongoose.connect('mongodb+srv://cadastro:cadastro@cluster0.qf8op.mongodb.net/myF
   useUnifiedTopology: true,
 });
 
+mongoose.Promise = global.Promise;
+
 
 
 let UsuarioModel = mongoose.model
