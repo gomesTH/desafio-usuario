@@ -1,0 +1,75 @@
+[
+  {
+    "id": 0,
+    "nome": "Leanne Graham",
+    "nascimento": "07/12",
+    "idade": "31",
+    "cpf":"129",
+    "cep":"233",
+    "endereço":"Rua frei luiz"
+  },
+  {
+    "id": 1,
+    "nome": "Ervin Howell",
+    "nascimento": "07/12",
+    "idade": "31",
+    "cpf":"129",
+    "cep":"233",
+    "endereço":"Rua frei luiz"
+
+  },
+  {
+    "id": 2,
+    "nome": "Clementine Bauch",
+    "nascimento": "07/12",
+    "idade": "31",
+    "cpf":"129",
+    "cep":"233",
+    "endereço":"Rua frei luiz"
+
+  },
+  {
+    "id": 3,
+    "nome": "Patricia Lebsack",
+    "nascimento": "07/12",
+    "idade": "31",
+    "cpf":"129",
+    "cep":"233",
+    "endereço":"Rua frei luiz"
+
+  },
+
+  {
+    "id": 4,
+    "name": "Clementine Bauch",
+    "nascimento": "07/12",
+    "idade": "31",
+    "cpf":"129",
+    "cep":"233",
+    "endereço":"Rua frei luiz"
+
+    
+  },
+  {
+    "id": 5,
+    "name": "Patricia Lebsack",
+    "nascimento": "07/12",
+    "idade": "31",
+    "cpf":"129",
+    "cep":"233",
+    "endereço":"Rua frei luiz"
+
+    
+    
+  },
+  {
+    "id": 6,
+    "name": "Chelsey Dietrich",
+    "nascimento": "07/12",
+    "idade": "31",
+    "cpf":"129",
+    "cep":"233",
+    "endereço":"Rua frei luiz"
+    
+  }
+]
